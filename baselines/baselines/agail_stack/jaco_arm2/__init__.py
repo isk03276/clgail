@@ -1,0 +1,1 @@
+from jaco_arm2.jaco2_pickup import Jaco2PickUpEnv

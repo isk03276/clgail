@@ -1,0 +1,107 @@
+<?xml version="1.0" ?>
+<mujoco model="jaco(v1.31)">
+    <compiler angle="radian" meshdir="meshes/"/>
+    <option gravity="0 0 -9.8" iterations="10" timestep="0.01"/>
+    <size nconmax="100" njmax="500"/>
+    <visual>
+        <global offheight="1025" offwidth="1853"/>
+    </visual>
+    <default class="main">
+        <joint armature="0.01" damping="0.5" limited="true"/>
+        <geom margin="0.001"/>
+        <default class="vizNcoll">
+            <geom conaffinity="0" material="MatViz" type="mesh"/>
+        </default>
+        <default class="ground">
+            <geom material="MatPlane" type="plane"/>
+        </default>
+    </default>
+    <asset>
+        <texture builtin="checker" height="100" markrgb="0.8 0.8 0.8" name="groundplane" rgb1="0.25 0.26 0.25" rgb2="0.22 0.22 0.22" type="2d" width="100"/>
+        <texture builtin="checker" height="1536" rgb1="1 1 1" rgb2="1 1 1" type="skybox" width="256"/>
+        <texture builtin="flat" height="762" mark="cross" markrgb="1 1 1" name="texgeom" rgb1="0.8 0.6 0.4" rgb2="0.8 0.6 0.4" type="cube" width="127"/>
+        <texture builtin="checker" height="100" name="texplane" rgb2="0.8 0.8 0.8" type="2d" width="100"/>
+        <texture builtin="checker" height="100" name="texplane_show" rgb1="0 0 0" rgb2="0.9 0.9 0.9" type="2d" width="100"/>
+        <material name="MatPlane" reflectance="0.5" shininess="1" specular="1" texrepeat="30 30" texture="texplane"/>
+        <material name="MatPlaneShow" reflectance="0.5" shininess="1" specular="1" texrepeat="30 30" texture="texplane_show"/>
+        <material name="geom" texture="texgeom" texuniform="true"/>
+        <material name="MatViz" reflectance="0.5" rgba="0.07 0.07 0.1 1" shininess="0.1" specular="1"/>
+        <material name="MatGnd" reflectance="1e-05" shininess="0.3" specular="1" texrepeat="5 5" texture="groundplane"/>
+        <mesh file="jaco_link_base.stl" name="jaco_link_base"/>
+        <mesh file="jaco_link_1.stl" name="jaco_link_1"/>
+        <mesh file="jaco_link_2.stl" name="jaco_link_2"/>
+        <mesh file="jaco_link_3.stl" name="jaco_link_3"/>
+        <mesh file="jaco_link_4.stl" name="jaco_link_4"/>
+        <mesh file="jaco_link_5.stl" name="jaco_link_5"/>
+        <mesh file="jaco_link_hand.stl" name="jaco_link_hand"/>
+        <mesh file="jaco_link_finger_1.stl" name="jaco_link_finger_1"/>
+        <mesh file="jaco_link_finger_2.stl" name="jaco_link_finger_2"/>
+        <mesh file="jaco_link_finger_3.stl" name="jaco_link_finger_3"/>
+    </asset>
+    <worldbody>
+        <geom class="ground" name="ground" size="2 2 1"/>
+        <light cutoff="60" diffuse="1 1 1" dir="-0.520579 -0.520579 -0.676753" directional="true" exponent="1" pos="1 1 1.5" specular="0.1 0.1 0.1"/>
+        <body childclass="vizNcoll" name="jaco_link_base" pos="0 0 0.25">
+            <geom mesh="jaco_link_base"/>
+            <geom pos="0 0 -0.125" size="0.045 0.125" type="capsule"/>
+            <body childclass="vizNcoll" name="jaco_link_1" pos="0 0 0.1535" quat="0 0 1 0">
+                <joint axis="0 0 -1" name="jaco_joint_1" pos="0 0 0" range="-0.5 0.5"/>
+                <geom mesh="jaco_link_1"/>
+                <body name="jaco_link_2" pos="0 0 -0.1185" quat="0 0 0.707107 0.707107">
+                    <joint axis="0 0 1" name="jaco_joint_2" pos="0 0 0" range="-1.5 0.7"/>
+                    <geom mesh="jaco_link_2"/>
+                    <body name="jaco_link_3" pos="0.41 0 0" quat="0 0.707107 0.707107 0">
+                        <joint axis="0 0 -1" name="jaco_joint_3" pos="0 0 0" range="-0.698132 0.698132"/>
+                        <geom mesh="jaco_link_3"/>
+                        <body name="jaco_link_4" pos="0.207 0 -0.01125" quat="0 0.707107 0 -0.707107">
+                            <joint axis="0 0 -1" name="jaco_joint_4" pos="0 0 0" range="-0.698132 0.698132"/>
+                            <geom mesh="jaco_link_4"/>
+                            <body name="jaco_link_5" pos="0.0343 0 -0.06588" quat="0.887011 0 -0.461749 0">
+                                <joint axis="0 0 -1" name="jaco_joint_5" pos="0 0 0" range="-0.698132 0.698132" ref="-2.8"/>
+                                <geom mesh="jaco_link_5"/>
+                                <body name="jaco_link_hand" pos="0.0343 0 -0.06588" quat="0.627211 -0.326506 -0.326506 0.627211">
+                                    <joint axis="0 0 -1" name="jaco_joint_6" pos="0 0 0" range="-0.698132 0.698132"/>
+                                    <geom mesh="jaco_link_hand" rgba="0.13 0.13 0.13 1"/>
+                                    <body name="jaco_link_finger_1" pos="-0.03978 0 -0.10071" quat="-0.414818 -0.329751 -0.663854 0.52772">
+                                        <joint axis="0 0 1" name="jaco_joint_finger_1" pos="0 0 0" range="0 0.698132"/>
+                                        <geom mesh="jaco_link_finger_1"/>
+                                    </body>
+                                    <body name="jaco_link_finger_2" pos="0.03569 -0.0216 -0.10071" quat="0.625248 -0.567602 0.434845 0.312735">
+                                        <joint axis="0 0 1" name="jaco_joint_finger_2" pos="0 0 0" range="0 0.698132"/>
+                                        <geom mesh="jaco_link_finger_2"/>
+                                    </body>
+                                    <body name="jaco_link_finger_3" pos="0.03569 0.0216 -0.10071" quat="0.561254 -0.620653 0.321748 0.443014">
+                                        <joint axis="0 0 1" name="jaco_joint_finger_3" pos="0 0 0" range="0 0.698132"/>
+                                        <geom mesh="jaco_link_finger_3"/>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+        <body name="target1" pos="0.5 0.15 0.035">
+            <joint armature="0" damping="0" limited="false" name="target1_joint" type="free"/>
+            <geom name="geom_object1" rgba="1 0 0 1" size="0.035 0.035 0.035" type="box"/>
+        </body>
+        <body name="target2" pos="0.65 0.25 0.035">
+            <joint armature="0" damping="0" limited="false" name="target1_joint2" type="free"/>
+            <geom name="geom_object2" rgba="0 1 0 1" size="0.035 0.035 0.035" type="box"/>
+        </body>
+    </worldbody>
+    <actuator>
+        <general ctrlrange="-1 1" gear="5 0 0 0 0 0" joint="jaco_joint_1" name="Ajaco_joint_1"/>
+        <general ctrlrange="-1 1" gear="10 0 0 0 0 0" joint="jaco_joint_2" name="Ajaco_joint_2"/>
+        <general ctrlrange="-1 1" gear="10 0 0 0 0 0" joint="jaco_joint_3" name="Ajaco_joint_3"/>
+        <general ctrlrange="-1 1" gear="10 0 0 0 0 0" joint="jaco_joint_4" name="Ajaco_joint_4"/>
+        <general ctrlrange="-1 1" gear="10 0 0 0 0 0" joint="jaco_joint_5" name="Ajaco_joint_5"/>
+        <general ctrlrange="-1 1" gear="10 0 0 0 0 0" joint="jaco_joint_6" name="Ajaco_joint_6"/>
+        <general ctrlrange="-1 1" gear="10 0 0 0 0 0" joint="jaco_joint_finger_1" name="Ajaco_joint_finger_1"/>
+        <general ctrlrange="-1 1" gear="10 0 0 0 0 0" joint="jaco_joint_finger_2" name="Ajaco_joint_finger_2"/>
+        <general ctrlrange="-1 1" gear="10 0 0 0 0 0" joint="jaco_joint_finger_3" name="Ajaco_joint_finger_3"/>
+    </actuator>
+    <keyframe>
+        <key qpos="0.10858871765778796 0.10259443706771973 -0.3926878498712707 -0.5993700211725012 -0.6617103090127905 0.390879552298919 0.35635314147567926 0.2664052336880272 0.8056837750846958 0.6545901369475705 0.23255991266681797 0.13099773195564615 0.6474050438227978 -0.6976702227848831 -0.25505476196759347 -0.1704993779160123 0.6827790588601191 0.24858808168778765 0.04873729314671338 0.9564370316790803 -0.05164631574211799 0.24865599779077577 0.1439828367058006" qvel="-0.5404059381246356 -0.006073702468188946 -0.3632885488215063 1.6302350310274474 -1.532952515812124 15.509569837021763 -2.254908364462338 3.014786480452372 -0.981092925723372 0.4399519181566496 0.19803641643413178 0.22554515615670284 3.0261944600385595 -4.557684154144879 -0.2525271606916073 0.16423196206586138 0.13603065684230195 0.12926211075383603 -1.3670177498491434 3.8861823344061666 -0.524167955842342" time="0.7000000000000004"/>
+    </keyframe>
+</mujoco>

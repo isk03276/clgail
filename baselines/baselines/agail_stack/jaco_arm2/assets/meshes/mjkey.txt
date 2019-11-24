@@ -1,0 +1,20 @@
+MuJoCo Pro Trial license activation key, number 137796, type 6.
+
+Issued to Jay Moon Park <pjm1231@ruu.kr>.
+
+Expires August 1, 2019.
+
+This file activates MuJoCo Pro on a single computer with id:
+LINUX_4bS5rVVirtuala_2939aca2fd2a4af697b52db6c4aMdwe8378
+
+Do not modify this file. Its entire content, including the
+plain text section, is used by the activation manager.
+
+d6621018b9c26c5e08f6b69482b0021f5cf7a0ea22fcc6c20a085ea2ce34b1d5
+69019d565be801289c589ef7059233c7c0de882211c509fd8438360bd1686024
+6f1371644c1e624578767b30a018cd399ea89283180125bb798fd11e75253989
+98f6eff507eea6ec9aa80cf3fb2ea2247575baaa541ffcc8b4993aa5520c23d5
+7f15058e6f508bfaf7e8fbf8e693af39a54e0b980463bb0748e3b7e0f96539c2
+110fef6262a641e988468bfda62b09c09e7f142643c37da50a316e9c017b56b9
+0223d51c30f77b586dbb070f90f54ed7ef01a3d9a1a067bc209347bbfcafaca6
+d98ef6d10cd452e7ef49704f800d428a236b65d54692b912bc41a6f12b4a5162

@@ -1,0 +1,8 @@
+-ex_2-2
+MAX_PHASE = 8
+phase = 8
+epsilon = 0.3
+self_explore = False
+
+sr_epsilon = 0.6
+sr_epsilon_infimum = 0.1
